@@ -5,12 +5,18 @@ RegisterNetEvent("lightning-attacks:toggle")
 RegisterNetEvent("lightning-attacks:strike")
 RegisterNetEvent("lightning-attacks:smite")
 
+local function log(message)
+	exports.logmanager:log(GetCurrentResourceName(), message)
+end
+
 local function ForceLightningFlashAtCoords(x, y, z, p3)
 	return Citizen.InvokeNative(0x67943537D179597C, x, y, z, p3)
 end
 
 local function lightningStrike(targetPos)
 	TriggerServerEvent("lightning-attacks:strike", targetPos)
+
+	log(("Used a lightning strike attack at (%.2f, %.2f, %.2f)"):format(targetPos.x, targetPos.y, targetPos.z))
 end
 
 local function toggle()
