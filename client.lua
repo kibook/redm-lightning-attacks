@@ -5,8 +5,8 @@ RegisterNetEvent("lightning-attacks:toggle")
 RegisterNetEvent("lightning-attacks:strike")
 RegisterNetEvent("lightning-attacks:smite")
 
-local function log(message)
-	exports.logmanager:log(GetCurrentResourceName(), message)
+local function log(message, coords)
+	exports.logmanager:log{resource = GetCurrentResourceName(), message = message, coords = coords}
 end
 
 local function ForceLightningFlashAtCoords(x, y, z, p3)
@@ -16,7 +16,7 @@ end
 local function lightningStrike(targetPos)
 	TriggerServerEvent("lightning-attacks:strike", targetPos)
 
-	log(("Used a lightning strike attack at (%.2f, %.2f, %.2f)"):format(targetPos.x, targetPos.y, targetPos.z))
+	log("Used a lightning strike attack", targetPos)
 end
 
 local function toggle()
