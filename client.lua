@@ -6,7 +6,7 @@ RegisterNetEvent("lightning-attacks:strike")
 RegisterNetEvent("lightning-attacks:smite")
 
 local function log(message, coords)
-	exports.logmanager:log{resource = GetCurrentResourceName(), message = message, coords = coords}
+	exports.logmanager:log{message = message, coords = coords}
 end
 
 local function ForceLightningFlashAtCoords(x, y, z, p3)
